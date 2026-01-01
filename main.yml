@@ -1,0 +1,14 @@
+---
+- name: latest file
+  hosts: localhost
+  vars:
+    - services: "jenkins"
+  tasks:
+    - name: check jenkins service
+      shell: systemctl status {{ services }}
+      register: service_jenkins_check
+
+    - name: debug service output
+      debug:
+        var: service_jenkins_check
+        
